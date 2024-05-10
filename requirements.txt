@@ -1,7 +1,7 @@
 Flask==2.0.3
 Flask-Cors>=3.0.0
 numpy==1.26.4
-opencv-python==4.5.3
+opencv-python-headless
 ultralytics==8.0.0 
 cloudinary==1.29.0
 pandas==2.2.2
