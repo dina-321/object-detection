@@ -1,7 +1,7 @@
 Flask
 Flask-Cors
 numpy
-opencv-python-headless
+opencv-python
 ultralytics
 gunicorn
 cloudinary
