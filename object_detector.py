@@ -40,6 +40,9 @@ def map_and_upload(image_path, detected_objects, class_names):
         timestamp = datetime.now().timestamp()
         return (mapped_values, timestamp, "No objects detected, no upload")
 
+
+
+
 # Main processing function
 def process_images(image_paths, model_path, class_names):
     model = load_model(model_path)
@@ -56,22 +59,21 @@ def process_images(image_paths, model_path, class_names):
 
 # Convert results to DataFrame and serialize to dictionary
 def results_to_dataframe(all_detections):
-    df = pd.DataFrame(all_detections, columns=['Detected Classes', 'Timestamp', 'Cloudinary URL'])
+    df = pd.DataFrame(all_detections, columns=['objects', 'Timestamp', 'URL'])
     return df, df.to_dict()
 
 # Define class names and image paths
 class_names = {
-    0: 'Book', 1: 'Earphone', 2: 'Mobile_phone', 3: 'cap', 4: 'headset', 5: 'smart_watch', 6: 'sunglasses'
+    0: 'Book', 1: 'Earphone', 2: 'headset', 3: 'Mobile_phone', 4: 'smart_watch', 5: 'cap', 6: 'sunglasses'
 }
-image_paths = ['../loaded_photos/test1.jpg', '../loaded_photos/test2.jpg', '../loaded_photos/test3.jpg', '../loaded_photos/test4.jpg']
+#image_paths = ['../loaded_photos/test1.jpg', '../loaded_photos/test2.jpg', '../loaded_photos/test3.jpg', '../loaded_photos/test4.jpg']
 
-def main():
+def detect_cheating(image_paths):
     configure_cloudinary()
     detections = process_images(image_paths, "best.pt", class_names)
     results_df, results_dict = results_to_dataframe(detections)
     results_dict = results_df.to_dict(orient='records')
-    # print("DataFrame:\n", results_df)
-    print("\nDictionary:\n", results_dict)
+    #print("DataFrame:\n", results_df)
+    print(detections)
+    return results_dict
 
-
-main()
