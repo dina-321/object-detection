@@ -32,4 +32,4 @@ def detect():
         return jsonify(results_dict)  # Return the results_dict directly
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(debug=True)
